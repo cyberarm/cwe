@@ -1,0 +1,25 @@
+%h1 Help was request on these Projects
+
+- @projects.each do |project|
+  %p{:style => "font-size: 20px; margin: 5px;"}
+    %a{:href => "#{project.site}", :target => "_blank"}
+      = project.title
+  = project.app[0..150]
+  %br/
+  = project.help[0..150]
+  %br/
+  = project.requester
+  %br/
+  =# project.site
+  %br/
+  %br/
+  = link_to 'More Details', project
+  %br/
+  = link_to 'Edit', edit_project_path(project)
+  = link_to 'Delete Request', project, :confirm => 'Are you sure?', :method => :delete
+
+%br
+%br
+%br
+
+= link_to 'Request help on my Project', new_project_path

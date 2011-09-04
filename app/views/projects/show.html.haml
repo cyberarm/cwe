@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @project.title
+%p
+  %b App:
+  = @project.app
+%p
+  %b Help:
+  = @project.help
+%p
+  %b Requester:
+  = @project.requester
+%p
+  %b Site:
+  = @project.site
+
+= link_to 'Edit', edit_project_path(@project)
+\|
+= link_to 'Back', projects_path
