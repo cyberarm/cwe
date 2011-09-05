@@ -1,25 +1,25 @@
-%h1 Help was request on these Projects
+%h1 Help was requested on these Projects
 
 - @projects.each do |project|
-  %p{:style => "font-size: 20px; margin: 5px;"}
-    %a{:href => "#{project.site}", :target => "_blank"}
-      = project.title
-  = project.app[0..150]
+  -if project.site.blank?
+    %p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} #{project.title}
+  -else
+    %p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} 
+      %a{:href => "#{project.site}", :target => "_blank", :class => "nolink"} #{project.title}
+  %center
+    %p{:style => "color: #323; font-size: 15px; margin-bottom: 1px; width: 450px;"} What is #{project.title}? <br /><br /> #{project.app[0..150]}
+    %br/
+    %p{:style => "color: #323; font-size: 15px; margin-bottom: 1px; width: 450px;"} What does #{project.title} need help with? <br /><br />  #{project.help[0..150]}
   %br/
-  = project.help[0..150]
+  = link_to 'More Details', project, :class => "button"
   %br/
-  = project.requester
-  %br/
-  =# project.site
-  %br/
-  %br/
-  = link_to 'More Details', project
-  %br/
-  = link_to 'Edit', edit_project_path(project)
-  = link_to 'Delete Request', project, :confirm => 'Are you sure?', :method => :delete
-
+  -if user_signed_in?
+    %hr{:width => "200px"}
+    .button-group
+      = link_to 'Edit', edit_project_path(project), :class => "button"
+      = link_to 'Delete Request', project, :confirm => 'Are you sure?', :method => :delete, :class => "button danger"
 %br
 %br
 %br
-
-= link_to 'Request help on my Project', new_project_path
+.button-group
+  = link_to 'Request help on my Project', new_project_path, :class => "button"

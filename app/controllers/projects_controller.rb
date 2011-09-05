@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /projects
   # GET /projects.xml
   def index
@@ -13,8 +15,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
-    @project = Project.find_by_title(params[:id]) || Project.find_by_id(params[:id])
-    #@project_show = Project.find(params[:id])
+    @project = Project.find(params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb

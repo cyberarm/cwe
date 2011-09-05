@@ -2,10 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.10'
 
-gem 'sqlite3' # db
+gem "friendly_id", "~> 4.0.0.beta8" # user and project slugs
 
-gem 'devise' # authentication gem
+gem 'sqlite3' # database
+
+gem 'devise' # authentication
 gem 'haml-rails' # layout
+gem "jquery-rails" # Javascript
+
 group :development do
  gem 'nifty-generators' # Ryanb's Nifty Generators
 end

@@ -29,7 +29,7 @@ a:hover {
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
-  border: solid 1px black;
+  border: solid 1px white;
   margin-top: 20px;
   border-radius: 3em;
 }
@@ -44,6 +44,7 @@ a:hover {
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
+  border-radius: 1em;
 }
 
 #flash_notice {
@@ -86,4 +87,13 @@ a:hover {
 
 .error_messages ul {
   margin: 0;
+}
+
+.nolink {
+  text-decoration: none;
+ }
+ 
+.nolink-small {
+  text-decoration: none;
+  font-size: 10px;
 }

@@ -5,21 +5,20 @@
       %ul
         - @project.errors.full_messages.each do |msg|
           %li= msg
-
+  %p{:style => "font-size: 10px;"} (* required)
   .field
-    = f.label :title
+    %p{:style => "margin-bottom: 1px;"} *Project name:
     = f.text_field :title
   .field
-    = f.label :app
+    %p{:style => "margin-bottom: 1px;"} *Project Description:
     = f.text_area :app
   .field
-    = f.label :help
+    %p *Please list below what the project needs help with:
     = f.text_area :help
   .field
-    = f.label :requester
-    = f.text_field :requester
+    = f.hidden_field :requester, :value => "#{current_user.id}"
   .field
-    = f.label :site
+    %p{:style => "margin-bottom: 1px;"} Website (optional)
     = f.text_field :site
   .actions
-    = f.submit 'Save'
+    = f.submit 'Submit Request'

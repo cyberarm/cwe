@@ -6,6 +6,9 @@
 %br/
 %p{:style => "font-size: 2em; margin: 2px"} Latest Help Requests:
 %hr{:width => "55%"}
-%p{:style => "font-size: 18px;"} 
- %a{:href => "/project/blender", :class => "nolink"} Blender
- %a{:href => "http://blender.org/", :target => "_blank", :class => "nolink-small"} (website)
+- @recent_requests.each do |project|
+ %p{:style => "font-size: 18px;"} 
+  %a{:href => "/projects/#{project.slug}", :class => "nolink", :title => "#{project.app[0..150]}"} #{project.title}
+  -if project.site.blank?
+  -else
+   %a{:href => "#{project.site}", :target => "_blank", :class => "nolink-small"} (website)

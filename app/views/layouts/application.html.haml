@@ -12,9 +12,14 @@
       %img{:src => "#{root_path}images/logo.png", :width => "33%"}
       #nav
         .button-group
-          %a{:href => "/", :class => "button big icon home"} Home
-          %a{:href => "/login", :class => "button big icon lock"} Login/Signup
-          %a{:href => "/projects", :class => "button big icon chat"} Projects
+          %a{:href => "#{root_path}", :class => "button big icon home"} Home
+          %a{:href => "#{root_path}projects", :class => "button big icon chat"} Projects
+          - if signed_in?
+            %b{:class => "button big"} Hi, #{current_user.username} 
+            = link_to "Logout", destroy_user_session_path, :method => :delete, :class => "button big icon lock"
+          -else
+            %a{:href => "#{root_path}users/login", :class => "button big icon lock"} Login/Signup
       - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
+        .flash
+          = content_tag :div, msg, :id => "flash_#{name}"
       = yield
