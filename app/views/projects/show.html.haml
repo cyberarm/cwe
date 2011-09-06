@@ -14,10 +14,11 @@
     = @project.help
 %p
   Help requested by:<br />
-  = @project.requester
+  %a{:href => "#{@requester.slug}", :class => "nolink"} #{@requester.username}
 
 .button-group
   -if user_signed_in?
+    -#if can?
     = link_to 'Edit', edit_project_path(@project), :class => "button"
   -else
   = link_to 'Back', projects_path, :class => "button"

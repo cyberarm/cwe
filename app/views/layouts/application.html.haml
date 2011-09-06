@@ -13,9 +13,10 @@
       #nav
         .button-group
           %a{:href => "#{root_path}", :class => "button big icon home"} Home
+          %a{:href => "#{root_path}users", :class => "button big icon user"} Users
           %a{:href => "#{root_path}projects", :class => "button big icon chat"} Projects
           - if signed_in?
-            %b{:class => "button big"} Hi, #{current_user.username} 
+            %a{:href => "/profile/#{current_user.slug}", :class => "button big"} Hi, #{current_user.username} 
             = link_to "Logout", destroy_user_session_path, :method => :delete, :class => "button big icon lock"
           -else
             %a{:href => "#{root_path}users/login", :class => "button big icon lock"} Login/Signup

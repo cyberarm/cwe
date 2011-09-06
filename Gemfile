@@ -4,6 +4,8 @@ gem 'rails', '3.0.10'
 
 gem "friendly_id", "~> 4.0.0.beta8" # user and project slugs
 
+ gem 'gravatar_image_tag' # Gravater images
+
 gem 'sqlite3' # database
 
 gem 'devise' # authentication

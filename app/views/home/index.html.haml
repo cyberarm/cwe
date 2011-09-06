@@ -4,11 +4,12 @@
  %p What is CWE? 
  %p CWE is a Open Source project to help other Open Source projects, <br /> By helping those projects Organize a once a month "Coding WeekEnd"<br /> where they post for help on specific Issues they want help fixing.
 %br/
-%p{:style => "font-size: 2em; margin: 2px"} Latest Help Requests:
-%hr{:width => "55%"}
-- @recent_requests.each do |project|
- %p{:style => "font-size: 18px;"} 
-  %a{:href => "/projects/#{project.slug}", :class => "nolink", :title => "#{project.app[0..150]}"} #{project.title}
-  -if project.site.blank?
-  -else
-   %a{:href => "#{project.site}", :target => "_blank", :class => "nolink-small"} (website)
+-unless @recent_requests.blank?
+ %p{:style => "font-size: 2em; margin: 2px"} Latest Help Requests:
+ %hr{:width => "55%"}
+ - @recent_requests.each do |project|
+  %p{:style => "font-size: 18px;"} 
+   %a{:href => "/projects/#{project.slug}", :class => "nolink", :title => "#{project.app[0..150]}..."} #{project.title}
+   -if project.site.blank?
+   -else
+    %a{:href => "#{project.site}", :target => "_blank", :class => "nolink-small"} (website)

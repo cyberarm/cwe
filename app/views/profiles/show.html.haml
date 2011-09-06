@@ -1,0 +1,11 @@
+#username{:style => "visibility:hidden; height: 0px;"}
+ #{@current_user = @user.username.capitalize}
+%h1{:style => "margin-bottom: 1px;"} 
+ = gravatar_image_tag(@user.email, :style => "margin-bottom: 0px;", :gravatar =>{ :size =>35,:secure => true})
+ #{@current_user}'s Profile 
+-if user_signed_in? 
+ -if current_user.id == @user.id 
+  (This is you, <a href="/users/edit" class="nolink">Edit profile</a>)
+
+%hr{:width => "500px"}
+%p{:style => "font-size: 20px;"}  User since, #{time_ago_in_words(@user.created_at)}

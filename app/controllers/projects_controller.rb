@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.all
+    @projects = Project.all(:order => "created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
+    @requester = User.find_by_id("#{@project.requester}")
 
 
     respond_to do |format|
