@@ -1,10 +1,11 @@
-%h1 Users
-%hr{:width => "500px"}
-- if @users.blank?
-- else
- - @users.each do |user|
-  = gravatar_image_tag(user.email, :style => "border-radius: 5px;", :gravatar =>{ :size =>40,:secure => true})
-  %p{:style => "margin: 0px; font-size: 2em;"}
-   %a{:href => "/profile/#{user.slug}", :class => "nolink"} #{user.username.capitalize}
-  %p{:style => "margin: 1px;"} Member Since: #{time_ago_in_words(user.created_at)}
-  %hr{:width => "500px"}
+-unless @users.blank?
+ %h1 Users
+ %hr{:width => "500px"}
+  - @users.each do |user|
+   = gravatar_image_tag(user.email, :style => "border-radius: 5px;", :gravatar =>{ :size =>40,:secure => true})
+   %p{:style => "margin: 0px; font-size: 2em;"}
+    %a{:href => "/profile/#{user.slug}", :class => "nolink"} #{user.username.capitalize}
+   %p{:style => "margin: 1px;"} Member Since: #{time_ago_in_words(user.created_at)}
+   %hr{:width => "500px"}
+-else
+ %p{:style => "font-size: 1.5em;"} There are no registered users around, its getting lonely<br /> <div style="-webkit-transform:rotate(90deg); font-size: 2em;">:(</div>

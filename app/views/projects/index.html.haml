@@ -1,17 +1,20 @@
-%h1 Help was requested on these Projects
-
+-unless @projects.blank?
+  %h1 Help was requested on these Projects
+-else 
+  %p{:style => "font-size: 1.5em;"} There are no registered users around, its getting lonely<br /> <div style="-webkit-transform:rotate(90deg); font-size: 2em;">:(</div>
 - @projects.each do |project|
-  -if project.site.blank?
-    %p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} #{project.title}
-  -else
-    %p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} 
-      %a{:href => "#{project.site}", :target => "_blank", :class => "nolink"} #{project.title}
+  %p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} 
+    %a{:href => "/projects/#{project.slug}", :target => "_blank", :class => "nolink"} #{project.title}
   %center
     %p{:style => "color: #323; font-size: 15px; margin-bottom: 1px; width: 450px;"} What is #{project.title}? <br /><br /> #{project.app[0..150]}
     %br/
     %p{:style => "color: #323; font-size: 15px; margin-bottom: 1px; width: 450px;"} What does #{project.title} need help with? <br /><br />  #{project.help[0..150]}
   %br/
-  = link_to 'More Details', project, :class => "button"
+  -if project.site.blank?
+  -else
+    %p{:style => "color: #323; margin-bottom: 1px;"} Website: <br />
+    %a{:href => "#{project.site}", :target => "_blank", :class => "nolink"} 
+      =removehttp project.site
   %br/
   -if user_signed_in?
     %hr{:width => "200px"}
@@ -22,4 +25,4 @@
 %br
 %br
 .button-group
-  = link_to 'Request help on my Project', new_project_path, :class => "button"
+  = link_to 'Request help on my Project', new_project_path, :class => "button big"

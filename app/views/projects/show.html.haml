@@ -1,21 +1,23 @@
 %p#notice= notice
 
--if @project.site.blank?
-  %p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} #{@project.title}
--else
-  %p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} 
-    %a{:href => "#{@project.site}", :target => "_blank", :class => "nolink"} #{@project.title}
+%p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} #{@project.title}
 %center
   %p{:style => "width: 500px;"}
     What is #{@project.title}?<br /><br />
     = @project.app
+  %br/
   %p
     #{@project.title} needs help with:<br /><br />
     = @project.help
+  %br/
+-unless @project.site.blank?
+  %p{:style => "color: #323; margin-bottom: 1px;"} Website:
+  %a{:href => "#{@project.site}", :target => "_blank", :class => "nolink"} 
+    =removehttp @project.site
 %p
   Help requested by:<br />
-  %a{:href => "#{@requester.slug}", :class => "nolink"} #{@requester.username}
-
+  %a{:href => "/profile/#{@requester.slug}", :class => "nolink"} #{@requester.username}
+%br/
 .button-group
   -if user_signed_in?
     -#if can?
