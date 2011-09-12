@@ -3,4 +3,4 @@
 
 setTimeout(function() {
     $('.flash').slideUp('slow');
-}, 3000); // <-- time in milliseconds
+}, 5000); // <-- time in milliseconds

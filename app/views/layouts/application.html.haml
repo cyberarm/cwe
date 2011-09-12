@@ -25,3 +25,16 @@
         .flash
           = content_tag :div, msg, :id => "flash_#{name}"
       = yield
+      %br/
+      %br/
+      %hr/
+      %a{:href => "/"} Home 
+      \|
+      %a{:href => "/projects"} Projects 
+      \|
+      %a{:href => "/users"} Users
+      \|
+      -unless user_signed_in?
+        %a{:href => "/users/login"} Login/Signup
+      -else
+        = link_to "Logout", destroy_user_session_path, :method => :delete

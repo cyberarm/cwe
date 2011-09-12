@@ -3,16 +3,16 @@
 -else 
   %p{:style => "font-size: 1.5em;"} There are no registered users around, its getting lonely<br /> <div style="-webkit-transform:rotate(90deg); font-size: 2em;">:(</div>
 - @projects.each do |project|
-  %p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} 
+  %p{:style => "font-size: 2em; margin-bottom: 1px;"} 
     %a{:href => "/projects/#{project.slug}", :target => "_blank", :class => "nolink"} #{project.title}
   %center
-    %p{:style => "color: #323; font-size: 15px; margin-bottom: 1px; width: 450px;"} What is #{project.title}? <br /><br /> #{project.app[0..150]}
+    %p{:style => "font-size: 15px; margin-bottom: 1px; width: 450px;"} <span style="color: #888;">What is #{project.title}?</span> <br /> #{project.app[0..150]}
     %br/
-    %p{:style => "color: #323; font-size: 15px; margin-bottom: 1px; width: 450px;"} What does #{project.title} need help with? <br /><br />  #{project.help[0..150]}
+    %p{:style => "font-size: 15px; margin-bottom: 1px; width: 450px;"} <span style="color: #888;">What does #{project.title} need help with?</span> <br />  #{project.help[0..150]}
   %br/
   -if project.site.blank?
   -else
-    %p{:style => "color: #323; margin-bottom: 1px;"} Website: <br />
+    %p{:style => "margin-bottom: 1px;"} <span style="color: #888;">Website:</span> <br />
     %a{:href => "#{project.site}", :target => "_blank", :class => "nolink"} 
       =removehttp project.site
   %br/
@@ -21,8 +21,8 @@
     .button-group
       = link_to 'Edit', edit_project_path(project), :class => "button"
       = link_to 'Delete Request', project, :confirm => 'Are you sure?', :method => :delete, :class => "button danger"
-%br
-%br
+  %br/
+  %br/
 %br
 .button-group
   = link_to 'Request help on my Project', new_project_path, :class => "button big"

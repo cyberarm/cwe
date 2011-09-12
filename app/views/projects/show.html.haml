@@ -1,21 +1,25 @@
-%p#notice= notice
-
-%p{:style => "color: #323; font-size: 2em; margin-bottom: 1px;"} #{@project.title}
+-#%p#notice= notice
+-unless @project.logo.blank?
+  %img{:src => "#{@project.logo}", :height => "50px"}
+  -if user_signed_in?
+    -if current_user.id == @project.requester
+      %p{:class => "notice"} Logo Images Coming Soon
+%p{:style => "color: #DD4814; font-size: 2em; margin-bottom: 1px;"} #{@project.title}
 %center
   %p{:style => "width: 500px;"}
-    What is #{@project.title}?<br /><br />
+    <span style="color: #888;">What is #{@project.title}?</span><br />
     = @project.app
   %br/
-  %p
-    #{@project.title} needs help with:<br /><br />
+  %p{:style => "width: 500px;"}
+    <span style="color: #888;">#{@project.title} needs help with:</span><br />
     = @project.help
   %br/
 -unless @project.site.blank?
-  %p{:style => "color: #323; margin-bottom: 1px;"} Website:
+  %p{:style => "margin-bottom: 1px;"} <span style="color: #888;">Website:</span>
   %a{:href => "#{@project.site}", :target => "_blank", :class => "nolink"} 
     =removehttp @project.site
 %p
-  Help requested by:<br />
+  <span style="color: #888;">Help requested by:</span><br />
   %a{:href => "/profile/#{@requester.slug}", :class => "nolink"} #{@requester.username}
 %br/
 .button-group

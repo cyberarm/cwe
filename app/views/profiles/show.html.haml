@@ -8,8 +8,10 @@
 
 %hr{:width => "500px"}
 %p{:style => "font-size: 20px;"}  User since, #{time_ago_in_words(@user.created_at)}
+-if @user.contactme?
+ %p Contact Me: <a href="mailto:#{@user.email}">#{@user.email}</a>
 %hr{:width => "500px"}
 -@projects.each do |project|
- %p{:style => "font-size: 2em;"} <a class="nolink" href="/project/@{project.slug}">#{project.title}</a>
+ %p{:style => "font-size: 2em;"} <a class="nolink" href="/projects/#{project.slug}">#{project.title}</a>
  %p Project request age: #{time_ago_in_words(project.created_at)}
  %br/

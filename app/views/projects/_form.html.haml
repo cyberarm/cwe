@@ -10,6 +10,9 @@
     %p{:style => "margin-bottom: 1px;"} *Project name:
     = f.text_field :title
   .field
+    %p{:style => "margin-bottom: 1px;"} Project logo url (i.e http://coding-weekend.com/logo.png):
+    = f.text_field :logo
+  .field
     %p{:style => "margin-bottom: 1px;"} *Project Description:
     = f.text_area :app
   .field
@@ -21,4 +24,4 @@
     %p{:style => "margin-bottom: 1px;"} Website (optional)
     = f.text_field :site
   .actions
-    = f.submit 'Submit Request'
+    = f.submit (@project.new_record? ? "Submit Request" : "Update Request")

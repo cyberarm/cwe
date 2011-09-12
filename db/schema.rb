@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110904185026) do
+ActiveRecord::Schema.define(:version => 20110909165042) do
 
   create_table "projects", :force => true do |t|
     t.string   "title"
@@ -22,14 +22,15 @@ ActiveRecord::Schema.define(:version => 20110904185026) do
     t.string   "site"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo"
   end
 
   add_index "projects", ["slug"], :name => "index_projects_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "slug"
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20110904185026) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.boolean  "contactme",                             :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
