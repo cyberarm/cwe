@@ -8,11 +8,11 @@
 %center
   %p{:style => "width: 500px;"}
     <span style="color: #888;">What is #{@project.title}?</span><br />
-    = @project.app
+  %pre{:style => "word-wrap: break-word;"}= @project.app
   %br/
   %p{:style => "width: 500px;"}
     <span style="color: #888;">#{@project.title} needs help with:</span><br />
-    = @project.help
+  %pre{:style => "word-wrap: break-word;"}= @project.help
   %br/
 -unless @project.site.blank?
   %p{:style => "margin-bottom: 1px;"} <span style="color: #888;">Website:</span>

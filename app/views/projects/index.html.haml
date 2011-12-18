@@ -4,11 +4,13 @@
   %p{:style => "font-size: 1.5em;"} There are no registered users around, its getting lonely<br /> <div style="-webkit-transform:rotate(90deg); font-size: 2em;">:(</div>
 - @projects.each do |project|
   %p{:style => "font-size: 2em; margin-bottom: 1px;"} 
-    %a{:href => "/projects/#{project.slug}", :target => "_blank", :class => "nolink"} #{project.title}
+    %a{:href => "/projects/#{project.slug}", :class => "nolink"} #{project.title}
   %center
-    %p{:style => "font-size: 15px; margin-bottom: 1px; width: 450px;"} <span style="color: #888;">What is #{project.title}?</span> <br /> #{project.app[0..150]}
+    %p{:style => "font-size: 15px; margin-bottom: 1px; width: 450px;"} <span style="color: #888;">What is #{project.title}?</span> <br />
+    %pre #{project.app[0..150]}
     %br/
-    %p{:style => "font-size: 15px; margin-bottom: 1px; width: 450px;"} <span style="color: #888;">What does #{project.title} need help with?</span> <br />  #{project.help[0..150]}
+    %p{:style => "font-size: 15px; margin-bottom: 1px; width: 450px;"} <span style="color: #888;">What does #{project.title} need help with?</span> <br />
+    %pre #{project.help[0..150]}
   %br/
   -if project.site.blank?
   -else
